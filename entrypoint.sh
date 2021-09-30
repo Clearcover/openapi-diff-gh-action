@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/sh -l
 service_name=$1
 new_spec=$2
 current_spec=$3
