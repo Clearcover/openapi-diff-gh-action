@@ -15,4 +15,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.new-openapi-spec }} ${{ inputs.current-openapi-spec }}
+    - ${{ inputs.new-openapi-spec }}
+    - ${{ inputs.current-openapi-spec }}
