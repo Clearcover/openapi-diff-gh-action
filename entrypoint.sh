@@ -8,7 +8,7 @@ echo "::debug ::service_name = $service_name , new_spec = $new_spec , current_sp
 
 state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incompatible --state "$current_spec" "$new_spec" 2>&1)
 
-echo "::debug $state"
+echo "::debug ::$state"
 
 echo "::set-output name=openapi-diff-state::$state"
 
