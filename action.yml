@@ -1,0 +1,18 @@
+# action.yml
+name: 'OpenAPI Diff GH action'
+description: 'Runs openapitools/openapi-diff and provides results in step output'
+inputs:
+  new-openapi-spec:
+    description: 'Absolute path to changed OpenAPI spec'
+    required: true
+  current-openapi-spec:
+    description: 'Absolute path to the current OpenAPI spec'
+    required: true
+outputs:
+  openapi-diff-result:
+    description: 'Result of the diff'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.new-openapi-spec }} ${{ inputs.current-openapi-spec }}
