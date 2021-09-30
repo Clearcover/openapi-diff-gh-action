@@ -8,6 +8,10 @@ inputs:
   current-openapi-spec:
     description: 'Absolute path to the current OpenAPI spec'
     required: true
+  only-state:
+    description: 'Only output diff state: no_changes, incompatible, compatible'
+    required: false
+    default: 'true'
 outputs:
   openapi-diff-result:
     description: 'Result of the diff'
@@ -17,3 +21,4 @@ runs:
   args:
     - ${{ inputs.new-openapi-spec }}
     - ${{ inputs.current-openapi-spec }}
+    - ${{ inputs.only-state }}
