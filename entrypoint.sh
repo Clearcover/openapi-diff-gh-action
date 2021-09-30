@@ -4,7 +4,9 @@ new_spec=$2
 current_spec=$3
 html_file="$service_name"-openapi-diff-results.html
 
-echo $service_name $new_spec $current_spec
+echo "Service name = $service_name , new_spec = $new_spec , current_spec = $current_spec"
+
+tree
 
 state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incompatible --state "$new_spec" "$current_spec" 2>&1)
 
