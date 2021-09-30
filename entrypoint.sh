@@ -10,3 +10,8 @@ fi
 
 echo "$result"
 echo "::set-output name=openapi-diff-result::$result"
+
+if [ "$result" = 'incompatible' ]
+then
+  echo "::warning ::Breaking/Incompatible OpenAPI changes found!!"
+fi
