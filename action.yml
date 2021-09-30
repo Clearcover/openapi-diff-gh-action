@@ -2,6 +2,9 @@
 name: 'OpenAPI Diff GH action'
 description: 'Runs openapitools/openapi-diff and provides results in step outputs'
 inputs:
+  service-name:
+    description: 'Name of the service that owns the OpenAPI spec'
+    required: true
   new-openapi-spec:
     description: 'Absolute path to changed OpenAPI spec'
     required: true
