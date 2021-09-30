@@ -19,4 +19,3 @@ runs:
   args:
     - ${{ inputs.new-openapi-spec }}
     - ${{ inputs.current-openapi-spec }}
-    - ${{ inputs.only-state }}
