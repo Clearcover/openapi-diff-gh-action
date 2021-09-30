@@ -8,13 +8,11 @@ inputs:
   current-openapi-spec:
     description: 'Absolute path to the current OpenAPI spec'
     required: true
-  only-state:
-    description: 'Only output diff state: no_changes, incompatible, compatible'
-    required: false
-    default: 'true'
 outputs:
   openapi-diff-state:
-    description: 'Result of the diff'
+    description: 'Result of the diff: no_changed, incompatible, compatible'
+  openapi-html-result:
+    description: 'HTML file containing the detailed results of the diff'
 runs:
   using: 'docker'
   image: 'Dockerfile'
