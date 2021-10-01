@@ -9,7 +9,7 @@ state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incom
 echo "::set-output name=openapi-diff-state::$state"
 
 if ! [[ "$state" =~ ^(incompatible|compatible|no_changes)$ ]]; then
-  echo "::error ::openapi-diff tool had issues performing comparison: $state"
+  echo "::error ::openapi-diff tool had issues performing comparison, error follows: $state"
   exit 1
 fi
 
