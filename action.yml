@@ -14,8 +14,8 @@ inputs:
 outputs:
   diff-state:
     description: 'Result of the diff: no_changed, incompatible, compatible'
-  diff-html-result:
-    description: 'HTML file containing the detailed results of the diff'
+  diff-md-result:
+    description: 'Markdown file containing the detailed results of the diff'
 runs:
   using: 'docker'
   image: 'Dockerfile'
