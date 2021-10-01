@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 service_name=$1
 new_spec=$2
 current_spec=$3
@@ -11,6 +11,11 @@ state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incom
 echo "::debug ::$state"
 
 echo "::set-output name=openapi-diff-state::$state"
+
+if [[ "$state" =~ ^(incompatible|compatible|no_changes)$ ]]; then
+  echo "::set-failed ::openapi-diff tool had issues performing comparison: $state"
+  exit 1
+fi
 
 if [ "$state" = 'incompatible' ]
 then
