@@ -6,7 +6,7 @@ html_file="$service_name"-openapi-diff.html
 
 state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incompatible --state "$current_spec" "$new_spec" 2>&1)
 
-echo "::set-output name=openapi-diff-state::$state"
+echo "::set-output name=diff-state::$state"
 
 if ! [[ "$state" =~ ^(incompatible|compatible|no_changes)$ ]]; then
   echo "::error ::openapi-diff tool had issues performing comparison, error follows: $state"
@@ -20,4 +20,4 @@ fi
 
 /usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incompatible --html "$html_file" "$current_spec" "$new_spec"
 
-echo "::set-output name=openapi-html-result::$html_file"
+echo "::set-output name=diff-html-result::$html_file"
