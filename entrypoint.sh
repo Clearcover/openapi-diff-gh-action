@@ -4,16 +4,13 @@ new_spec=$2
 current_spec=$3
 html_file="$service_name"-openapi-diff.html
 
-echo "::debug ::service_name = $service_name , new_spec = $new_spec , current_spec = $current_spec, html_file = $html_file"
-
 state=$(/usr/local/openjdk-8/bin/java -jar /app/openapi-diff.jar --fail-on-incompatible --state "$current_spec" "$new_spec" 2>&1)
-
-echo "::debug ::Debug state = $state"
 
 echo "::set-output name=openapi-diff-state::$state"
 
 if ! [[ "$state" =~ ^(incompatible|compatible|no_changes)$ ]]; then
-  echo "::set-failed ::openapi-diff tool had issues performing comparison: $state"
+  echo "::error ::openapi-diff tool had issues performing comparison: $state"
+  exit 1
 fi
 
 if [ "$state" = 'incompatible' ]
